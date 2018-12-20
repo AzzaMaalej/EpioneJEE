@@ -89,9 +89,6 @@ public class AspNetUser implements Serializable {
 	@Column(name="Poids")
 	private int poids;
 
-	@Column(name="PathId")
-	private String pathId;
-
 	@Column(name="SecurityStamp")
 	private String securityStamp;
 
@@ -108,12 +105,8 @@ public class AspNetUser implements Serializable {
 	private boolean twoFactorEnabled;
 
 	@Column(name="UserName")
-	private String userName;
+	private String username;
 	
-	//bi-directional one-to-one association to MedicalPath
-	@OneToOne(mappedBy="aspNetUser")
-	private MedicalPath medicalPath;
-
 	public AspNetUser() {
 	}
 
@@ -127,7 +120,7 @@ public class AspNetUser implements Serializable {
 		this.lockoutEnabled = lockoutEnabled;
 		this.phoneNumberConfirmed = phoneNumberConfirmed;
 		this.twoFactorEnabled = twoFactorEnabled;
-		this.userName = userName;
+		this.username = userName;
 	}
 
 	public String getId() {
@@ -274,14 +267,6 @@ public class AspNetUser implements Serializable {
 		this.poids = poids;
 	}
 
-	public String getPathId() {
-		return pathId;
-	}
-
-	public void setPathId(String pathId) {
-		this.pathId = pathId;
-	}
-
 	public String getSecurityStamp() {
 		return this.securityStamp;
 	}
@@ -323,20 +308,13 @@ public class AspNetUser implements Serializable {
 	}
 
 	public String getUserName() {
-		return this.userName;
+		return this.username;
 	}
 
 	public void setUserName(String userName) {
-		this.userName = userName;
+		this.username = userName;
 	}
 
-	public MedicalPath getMedicalPath() {
-		return this.medicalPath;
-	}
-
-	public void setMedicalPath(MedicalPath medicalPath) {
-		this.medicalPath = medicalPath;
-	}
 
 	@Override
 	public String toString() {
@@ -347,8 +325,8 @@ public class AspNetUser implements Serializable {
 				+ ", lockoutEndDateUtc=" + lockoutEndDateUtc + ", passwordHash=" + passwordHash + ", phoneNumber="
 				+ phoneNumber + ", phoneNumberConfirmed=" + phoneNumberConfirmed + ", poids=" + poids
 				+ ", securityStamp=" + securityStamp + ", speciality=" + speciality + ", taille=" + taille
-				+ ", traitements=" + traitements + ", twoFactorEnabled=" + twoFactorEnabled + ", userName=" + userName
-				+ ", medicalPath=" + medicalPath + "]";
+				+ ", traitements=" + traitements + ", twoFactorEnabled=" + twoFactorEnabled + ", userName=" + username
+				+ "]";
 	}
 
 }
