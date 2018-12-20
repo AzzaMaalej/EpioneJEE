@@ -43,7 +43,7 @@ public class MedicalPath implements Serializable {
 
 	//bi-directional one-to-one association to AspNetUser
 	@OneToOne
-	@JoinColumn(name="PathId")
+	@JoinColumn(name="Patient_id")
 	private AspNetUser aspNetUser;
 
 	public MedicalPath() {
